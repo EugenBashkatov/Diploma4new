@@ -299,7 +299,7 @@ def build_graph_with_clusters(start_point, data_list, DEBUG=False):
                     p_cluster_begin.append(x0)
                     if(DEBUG): log.debug("p_cluster_begin={}".format(p_cluster_begin))
                     # d_cluster_chain[x0] = interior_list.insert(x0, x1)
-                    interior_list.insert(0,x0)
+                    #interior_list.insert(0,x0)
                     d_cluster_chain[x0] = interior_list
                     if(DEBUG): log.debug("d_cluster_chain={}".format(d_cluster_chain))
                     # d_cluster_length[x0] = cluster_len
@@ -307,7 +307,7 @@ def build_graph_with_clusters(start_point, data_list, DEBUG=False):
 
                 else:
                     cluster_len = x2 - x1+1
-                    #interior_list.insert(0,x0)
+                    interior_list.insert(0,x1)
                     p_cluster_begin.append(x1)
                     d_cluster_length[x1] = cluster_len
                     d_cluster_chain[x1] = interior_list
@@ -395,7 +395,7 @@ def draw_pic(par_data_list):
     fig,_ax=plt.subplots()
     # st.stemplot(new_ind, data_list, SAVEPP=True, pdfname='TEST.jpg')
     ax.stem(new_ind,par_data_list)
-    for _i in d_cluster_chain:
+    for i in d_cluster_chain:
         print(d_cluster_chain[i])
         xstart = d_cluster_chain[i][0]
         ystart = par_data_list[xstart]
@@ -452,7 +452,7 @@ if ONLY_NORMAL:
         d_cluster_chain = {0: [0]}
         print("*****************fi = {} ***********************".format(fi))
 
-        #next_point, last_x, last_len = build_graph_with_clusters(8, data_list, False)
+        #next_point, last_x, last_len = build_graph_with_clusters(0, data_list, False)
 
         while start_point < max_dim - 1:
 

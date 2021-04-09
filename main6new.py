@@ -16,6 +16,10 @@ import datetime as dt
 import seaborn as sns
 import utilities as ut
 from matplotlib.backends.backend_pdf import PdfPages
+from collections import deque as deq, namedtuple as nt,UserDict as ud
+# cur_stack={0:{0:[0]}}
+# a=(cur_stack[0])[1]=[1,2,3,4,5]
+# b=deq
 
 import mymodule as my
 import distributions as dst
@@ -392,7 +396,7 @@ def build_graph_with_clusters(start_point, data_list, DEBUG=False):
 
 
 def draw_pic(par_data_list):
-    fig,_ax=plt.subplots()
+    fig,ax=plt.subplots()
     # st.stemplot(new_ind, data_list, SAVEPP=True, pdfname='TEST.jpg')
     ax.stem(new_ind,par_data_list)
     for i in d_cluster_chain:

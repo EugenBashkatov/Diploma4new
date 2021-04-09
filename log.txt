@@ -1,0 +1,7 @@
+[2021-04-09 17:44:03,970] main6new.py:63 DEBUG    start
+[2021-04-09 17:44:05,565] main6new.py:480 DEBUG    000***first=8 last=15 max_dim=15 last_len=6
+[2021-04-09 17:44:05,831] main6new.py:480 DEBUG    000***first=13 last=15 max_dim=15 last_len=1
+[2021-04-09 17:44:06,081] main6new.py:488 DEBUG    fi = 0.1, Density=0.4 num clustters=6 len datalist=15
+[2021-04-09 17:44:06,495] main6new.py:480 DEBUG    000***first=8 last=15 max_dim=15 last_len=6
+[2021-04-09 17:44:06,667] main6new.py:480 DEBUG    000***first=13 last=15 max_dim=15 last_len=1
+[2021-04-09 17:44:07,030] main6new.py:488 DEBUG    fi = 0.2, Density=0.4 num clustters=6 len datalist=15

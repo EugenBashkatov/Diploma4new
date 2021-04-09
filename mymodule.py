@@ -32,3 +32,5 @@ if __name__ == '__main__':
     d_cluster_length = {0: 2}
     d_cluster_mean = {}
     d_cluster_var = {}
+    global data_list
+    a=data_list[1]

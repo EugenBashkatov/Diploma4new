@@ -52,13 +52,17 @@ def is_visible():
     x1= x0 + 1
     next_k = get_k(x0,x1)
     cur_k=test_k.popleft()
-    test_k.appendleft(cur_k)
-    return (next_k > cur_k)
+    test_k.append(cur_k)
+    return cur_k<next_k
 
 def get_clusters():
     global stack_vis
     global stack_invis
     global data_list
+    global step
+    step+=1
+    max_step=3
+    print('*step step={}'.format(step))
     # global stack_invis
     len_stack=stack_vis.__len__()
     cur_dot = stack_vis[0]
@@ -81,17 +85,20 @@ def get_clusters():
         test_k.appendleft(next_dot[1])
         stack_invis.popleft()
         print('1   vis={}'.format(stack_vis))
-        print('1 invis={}'.format(stack_invis))
+        print('1  invis={}'.format(stack_invis))
+        print('1 test_k={}'.format(stack_invis))
+        if step==max_step:exit()
 
         get_clusters()
-        exit()
+        #exit()
     else:
         stack_invis.popleft()
         stack_invis.append(next_dot)
         print('2   vis={}'.format(stack_vis))
         print('2 invis={}'.format(stack_invis))
+        print('2 test_k={}'.format(stack_invis))
 
-
+        if step==max_step:exit()
         get_clusters()
     return next_dot
 
@@ -107,10 +114,11 @@ stack_vis = dq()
 pointer=dq()
 stack_invis = dq()
 test_k=dq()
+step=0
 
 stack_vis.append([0,-math.inf,data_list[0]])
 #stack_invis.append([0,-math.inf,data_list[0]])
-test_k.appendleft(-math.inf)
+test_k.append(-math.inf)
 get_clusters()
 
 print('3   vis={}'.format(stack_vis.__len__()))
@@ -118,5 +126,5 @@ print('3 invis={}'.format(stack_invis))
 print('4   vis={}'.format(stack_vis))
 print('4 invis={}'.format(stack_invis))
 
-# ------------------------------------------
+# --------------------------TEST----------------
 

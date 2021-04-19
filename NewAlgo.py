@@ -1,4 +1,4 @@
-from collections import deque as dq
+from collections import deque as dq,namedtuple as nt
 import math
 tst = dq()
 tst1=dq()
@@ -42,11 +42,8 @@ def is_visible():
     global test_k
     global step
 
-    cur_dot = stack_vis.popleft()
+    cur_dot = stack_invis.popleft()
     stack_vis.appendleft(cur_dot)
-
-
-
     x0=cur_dot[0]
     cur_k = cur_dot[1]
     x1= x0 + 1
@@ -59,13 +56,19 @@ def get_clusters():
     global stack_vis
     global stack_invis
     global data_list
+    global cur_dot
     global step
     step+=1
     max_step=3
     print('*step step={}'.format(step))
+    cur_dot=nt('Point',['x0','k','t','vis'])
+    cur_dot.x0=0
+    cur_dot.k=-math.inf
+    cur_dot.t=data_list[0]
+    cur_dot.vis=False
     # global stack_invis
     len_stack=stack_vis.__len__()
-    cur_dot = stack_vis[0]
+    cur_dot = stack_invis.popleft()
     stack_invis.appendleft(cur_dot)
     x0=cur_dot[0]
     cur_k = cur_dot[1]
@@ -116,9 +119,10 @@ stack_invis = dq()
 test_k=dq()
 step=0
 
-stack_vis.append([0,-math.inf,data_list[0]])
+stack_invis.appendleft([0,-math.inf,data_list[0],False])
 #stack_invis.append([0,-math.inf,data_list[0]])
-test_k.append(-math.inf)
+
+test_k.appendleft(-math.inf)
 get_clusters()
 
 print('3   vis={}'.format(stack_vis.__len__()))

@@ -42,14 +42,17 @@ def is_visible():
     global test_k
     global step
 
-    cur_dot = stack_invis.popleft()
-    stack_vis.appendleft(cur_dot)
+    cur_dot = stack_invis.popleft()# get cur_dot
+    stack_invis.appendleft(cur_dot)# push cur_dot
     x0=cur_dot[0]
     cur_k = cur_dot[1]
+    cur_k=test_k.pop()# get cur_k
+    test_k.append(cur_k)# push cur_k
     x1= x0 + 1
     next_k = get_k(x0,x1)
-    cur_k=test_k.popleft()
+    cur_k=test_k.pop()
     test_k.append(cur_k)
+    test_k.append(next_k)
     return cur_k<next_k
 
 def get_clusters():
@@ -59,7 +62,7 @@ def get_clusters():
     global cur_dot
     global step
     step+=1
-    max_step=3
+    max_step=3 # recursion deep for debugging
     print('*step step={}'.format(step))
     cur_dot=nt('Point',['x0','k','t','vis'])
     cur_dot.x0=0
@@ -124,11 +127,12 @@ stack_invis.appendleft([0,-math.inf,data_list[0],False])
 
 test_k.appendleft(-math.inf)
 get_clusters()
+aaa=list(stack_invis)
 
 print('3   vis={}'.format(stack_vis.__len__()))
 print('3 invis={}'.format(stack_invis))
 print('4   vis={}'.format(stack_vis))
 print('4 invis={}'.format(stack_invis))
 
-# --------------------------TEST----------------
+# --------------------------20.00----------------
 
